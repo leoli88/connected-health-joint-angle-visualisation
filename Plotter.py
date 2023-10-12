@@ -6,8 +6,10 @@
 # Python 3.10
 
 # Imports
+import io
 import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image
 
 class Plotter:
     # Plotter class
@@ -54,6 +56,8 @@ class Plotter:
             ax.set_yticks(list(np.linspace(start=-180, stop=180, num=self.numIntervals)))
             ax.legend()
 
+        self.fig = fig
+        self.axs = axs
         self.plotted = True
 
 
@@ -76,6 +80,8 @@ class Plotter:
             ax.set_xticks(list(range(self.numFrames)), [str(i) for i in range(self.numFrames)])
             ax.set_yticks(list(np.linspace(start=0, stop=180, num=self.numIntervals)))
 
+        self.fig = fig
+        self.axs = axs
         self.plotted = True
 
 
@@ -103,3 +109,28 @@ class Plotter:
             exit(1)
 
         plt.show()
+
+    
+    # Pregenerate marked plots
+    def markPlots(self):
+        self.markedPlots = []
+        for i in range(self.numFrames):
+            # Add lines to plot
+            lines = []
+            for ax in self.axs:
+                lines.append(ax.axvline(x=i, color='r', linestyle='--'))
+
+            # # Save plot in array
+            # self.fig.canvas.draw()
+            # image_flat = np.frombuffer(self.fig.canvas.tostring_rgb(), dtype='uint8')
+            # image = image_flat.reshape(*reversed(self.fig.canvas.get_width_height()), 3)
+            # self.markedPlots.append(image)
+
+            # Clear plot lines
+            for line in lines:
+                line.remove()
+            lines.clear()
+
+            # plt.imshow(image, interpolation='nearest')
+            # plt.show()
+

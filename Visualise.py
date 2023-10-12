@@ -70,8 +70,11 @@ if __name__ == '__main__' :
     plotter = Plotter.Plotter(numFrames, joint, interval, leftJointRoll, leftJointPitch, leftJointYaw, rightJointRoll, rightJointPitch, rightJointYaw, left3d, right3d)
     if dimension == '2d':
         plotter.plot2d()
+        plotter.markPlots()
     elif dimension == '3d':
         plotter.plot3d()
+
+    exit(1)
 
     if '-S' in sys.argv:
         rawFilename, _ = os.path.splitext(os.path.basename(filename))
