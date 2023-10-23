@@ -74,8 +74,6 @@ if __name__ == '__main__' :
     elif dimension == '3d':
         plotter.plot3d()
 
-    exit(1)
-
     if '-S' in sys.argv:
         rawFilename, _ = os.path.splitext(os.path.basename(filename))
         plotter.save(dimension, rawFilename + '_angle_visulisation')

@@ -50,10 +50,10 @@ class Plotter:
 
         for ax in axs.flat:
             ax.set(xlabel='Frames', ylabel='Angle(Degrees)')
-            ax.set(ylim=[-180, 180])
+            ax.set(ylim=[0, 180])
             ax.grid()
-            ax.set_xticks(list(range(self.numFrames)), [str(i) for i in range(self.numFrames)])
-            ax.set_yticks(list(np.linspace(start=-180, stop=180, num=self.numIntervals)))
+            # ax.set_xticks(list(range(self.numFrames)), [str(i) for i in range(self.numFrames)])
+            ax.set_yticks(list(np.linspace(start=0, stop=180, num=self.numIntervals)))
             ax.legend()
 
         self.fig = fig
@@ -77,7 +77,7 @@ class Plotter:
             ax.set(xlabel='Frames', ylabel='Angle(Degrees)')
             ax.set(ylim=[0, 180])
             ax.grid()
-            ax.set_xticks(list(range(self.numFrames)), [str(i) for i in range(self.numFrames)])
+            # ax.set_xticks(list(range(self.numFrames)), [str(i) for i in range(self.numFrames)])
             ax.set_yticks(list(np.linspace(start=0, stop=180, num=self.numIntervals)))
 
         self.fig = fig
